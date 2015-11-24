@@ -1,0 +1,7 @@
+#-1 produce the (sub)matrix(s) of data
+LOAD="1000 5000 9000"
+NNODES=10K
+for i in results.$NNODES*avg.all; do for j in $LOAD; do bash tools/elab/get_data_subset.sh $i $i.$j.NSTEPS $j tools/elab/steps.ncol; done ; done
+
+#-2 the eps graphics (candlestick)
+for i in results.*NSTEPS; do bash tools/plot/candle_stick.gnuplot.sh $i candle_stick.nsteps.ndef; done

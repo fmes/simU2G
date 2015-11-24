@@ -1,0 +1,13 @@
+min=2
+fq=3
+med=4
+tq=5
+max=6
+quart_title="Quartiles" 
+med_title="Median"
+logy=0
+xlabel="WI"
+ylabel="MAS"
+xmn=0
+xmx=1
+#title="

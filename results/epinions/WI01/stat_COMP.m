@@ -1,0 +1,24 @@
+
+A=zeros(11,10);
+load epinions_W01_WI01_NOoverlap;
+A(:,1)=epinions_W01_WI01_NOoverlap(:,1);
+A(:,2)=epinions_W01_WI01_NOoverlap(:,2);
+load epinions_W02_WI01_NOoverlap;
+A(:,3)=epinions_W02_WI01_NOoverlap(:,2);
+load epinions_W03_WI01_NOoverlap;
+A(:,4)=epinions_W03_WI01_NOoverlap(:,2);
+load epinions_W04_WI01_NOoverlap;
+A(:,5)=epinions_W04_WI01_NOoverlap(:,2);
+load epinions_W05_WI01_NOoverlap;
+A(:,6)=epinions_W05_WI01_NOoverlap(:,2);
+load epinions_W06_WI01_NOoverlap;
+A(:,7)=epinions_W06_WI01_NOoverlap(:,2);
+load epinions_W07_WI01_NOoverlap;
+A(:,8)=epinions_W07_WI01_NOoverlap(:,2);
+load epinions_W08_WI01_NOoverlap;
+A(:,9)=epinions_W08_WI01_NOoverlap(:,2);
+load epinions_W09_WI01_NOoverlap;
+A(:,10)=epinions_W09_WI01_NOoverlap(:,2);
+S=statistics(A(:,2:end),1)(1:5,:)';
+SS=[[0.1:0.1:0.9]',S];
+dlmwrite("stat_COMP_WI01.dat",SS, "\t", "precision", 4);

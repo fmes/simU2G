@@ -1,0 +1,24 @@
+
+A=zeros(11,10);
+load ciao_W01_WI08_NOoverlap;
+A(:,1)=ciao_W01_WI08_NOoverlap(:,1);
+A(:,2)=ciao_W01_WI08_NOoverlap(:,2);
+load ciao_W02_WI08_NOoverlap;
+A(:,3)=ciao_W02_WI08_NOoverlap(:,2);
+load ciao_W03_WI08_NOoverlap;
+A(:,4)=ciao_W03_WI08_NOoverlap(:,2);
+load ciao_W04_WI08_NOoverlap;
+A(:,5)=ciao_W04_WI08_NOoverlap(:,2);
+load ciao_W05_WI08_NOoverlap;
+A(:,6)=ciao_W05_WI08_NOoverlap(:,2);
+load ciao_W06_WI08_NOoverlap;
+A(:,7)=ciao_W06_WI08_NOoverlap(:,2);
+load ciao_W07_WI08_NOoverlap;
+A(:,8)=ciao_W07_WI08_NOoverlap(:,2);
+load ciao_W08_WI08_NOoverlap;
+A(:,9)=ciao_W08_WI08_NOoverlap(:,2);
+load ciao_W09_WI08_NOoverlap;
+A(:,10)=ciao_W09_WI08_NOoverlap(:,2);
+S=statistics(A(:,2:end),1)(1:5,:)';
+SS=[[0.1:0.1:0.9]',S];
+dlmwrite("stat_COMP_WI08.dat",SS, "\t", "precision", 4);
