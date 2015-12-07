@@ -5,6 +5,8 @@ else
 w=$1
 ds=$2
 
+d=$(`cd dirname $0`; pwd);
+
   for l in "COMP" "SIM"; do
     statf="stat_$l.m"
     echo "" > $statf
@@ -27,10 +29,9 @@ ds=$2
 
       echo "S=statistics(A(:,2:end),1)(1:5,:)';" >> $statf
       echo "SS=[[0.1:0.1:0.9]',S];" >> $statf
-#  echo "save(\"-ascii\", \"stat_$l.dat\", \"SS\");" >> $statf
       echo "dlmwrite(\"stat_$l""_W0$w"".dat\",SS, \"\t\", \"precision\", 4);" >> $statf
 
       octave --silent $statf
-      bash `dirname $0`/candlestick/candle_stick.gnuplot.sh stat_$l"_W0$w"".dat" `dirname $0`/candlestick/candle_stick.Wfixed.WIvar.ndef
+      bash $d/candlestick/candle_stick.gnuplot.sh stat_$l"_W0$w"".dat" $d/candlestick/candle_stick.Wfixed.WIvar.ndef
   done
 fi

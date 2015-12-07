@@ -3,8 +3,8 @@ if [[ -z $1 ]]; then
 else
 
   d=$(cd `dirname $0` && pwd);
-
   ds=$1
+
   #W
   for i in `seq 1 9`; do
     (cd W0$i; bash $d/stat_W_diff.sh $i $ds; rm -f data.dat; ln -s stat_diff_W0$i.dat data.dat; gnuplot $d/plotDiffW.gnuplot > plot_diff_W0$i.eps)

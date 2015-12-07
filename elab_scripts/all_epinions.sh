@@ -1,8 +1,14 @@
-for i in `seq 1 9`; do (cd WI0$i; bash ../elab_W.sh $i epinions); done 
-for i in `seq 1 9`; do (cd W0$i; bash ../elab_WI.sh $i epinions); done 
+elab_dir=$(cd `dirname $0`; pwd)
 
-for i in `seq 1 9`; do (cd W0$i; bash ../plot_all.sh epinions); done 
-for i in `seq 1 9`; do (cd WI0$i; bash ../plot_all.sh epinions); done 
+cd results/epinions;
 
-for i in `seq 1 9`; do (cd W0$i; bash  ../stat_WI.sh $i epinions); done 
-for i in `seq 1 9`; do (cd WI0$i; bash  ../stat_W.sh $i epinions); done 
+for i in `seq 1 9`; do 
+  (cd WI0$i; bash $elab_dir/process_W.sh $i epinions);
+  (cd W0$i; bash $elab_dir/process_WI.sh $i epinions);
+ 
+  (cd W0$i; bash  $elab_dir/stat_WI.sh $i epinions); 
+  (cd WI0$i; bash $elab_dir/stat_W.sh $i epinions); 
+
+  (cd W0$i; bash $elab_dir/plot_all_diff.sh epinions); 
+  (cd WI0$i; bash $elab_dir/plot_all_diff_histo.sh epinions);
+done 

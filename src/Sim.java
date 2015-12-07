@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.Random;
 import java.io.*;
  
-//nuova versione con dataset reali
     class SN {
     public static Integer sWindows;
     public static int numCategory;
@@ -1426,13 +1425,8 @@ import java.io.*;
 	    group_agent_task(s, epoca, k);
        }
 
-      //Compactness vs Similarity to form groups
+      //Compactness vs Similarity to form groups - Transactions on Cybernetics 
       public static void experiment2() throws Exception{  
-	/*if (Sim.dataset.equals("ciao"))
- 	     dimTraining = 16000;	
-	else
-	     dimTraining = 400000;
-	*/
 
 	//inizializza i parametri statici della SN con i valori 
 	//letti da file
@@ -1447,23 +1441,23 @@ import java.io.*;
     
 	int start, end;
 
-	System.out.println("inizio caricamento dati, sWindows=" + SN.sWindows);	
+	System.out.println("Loading data, sWindows=" + SN.sWindows);	
 
 	//int dimTraining = SN.sWindows;
-	System.out.println("inizio simulazione training, sw="+SN.sWindows);
+//	System.out.println("Starting training, sw="+SN.sWindows);
 	
 	//INIZIALIZZA LA RETE S1 PER LA FASE DI TRAINING - COMPACTNESS
 	SN s1 = InitTraining(SN.sWindows);
-	System.out.println("generazione SN di training da file completata, window-size=" + 
-	SN.sWindows + "/" + SN.maxRowsRating);
+	System.out.println("Generation of network for training (COMP), done (window-size=" + 
+	SN.sWindows + "/" + SN.maxRowsRating + ")");
 	s1.computeReputation();
-	System.out.println("calcolo dei valori di reputazione di training completata");
+	System.out.println("Reputation for training calculated..");
 
 	int epoca = 0;
 	MAC = s1.MAC();
 	MAS = s1.MAS(epoca, "INIT-Training-COMP");
-	System.out.println("Inizio simulazione di training algoritmo U2G");
-	System.out.println("epoca di training=" + epoca + " MAC=" + MAC + ", MAS="+MAS);
+	System.out.println("Starting training with U2G");
+	System.out.println("Training epoch: " + epoca + " MAC=" + MAC + ", MAS="+MAS);
 
 	//FORMAZIONE GRUPPI CON COMPACTNESS
 	double e = 0.5;
@@ -1488,13 +1482,13 @@ import java.io.*;
 	    prevMas = MAS;
 	    
 	    //DAC=s1.DAC();
-	    System.out.println("epoca di training=" + epoca + " MAC=" + MAC + ", MAS="+MAS);
+	    System.out.println("Epoch= " + epoca + " MAC=" + MAC + ", MAS="+MAS);
 	  }
-	  System.out.println("finito");
+	  System.out.println("Training for U2G-Comp ended");
 	
 	  //crea la SN di test con i gruppi trovati nella fase di training
 
-	  System.out.println("inizio simulazione test, nt="+nTest);
+	  System.out.println("Starting test for U2G, nt="+nTest);
 	  swTest = (int) java.lang.Math.floor(((double) SN.maxRowsRating - (double) swTraining) / (double) nTest);
 
 	  if(overlap==1)
@@ -1525,17 +1519,16 @@ import java.io.*;
 	}
 	System.out.println("finito");
 
-	//RE-INIZIALIZZA LA RETE S1 PER LA FASE DI TRAINING -- SIMILARITÀ
+	//RE-INIZIALIZZA LA RETE S1 PER LA FASE DI TRAINING -- SIMILARITY
 	s1 = InitTraining(SN.sWindows);
-	System.out.println("Generazione SN di training da file completata, window-size=" + 
-	  SN.sWindows + "/" + SN.maxRowsRating);
+	System.out.println("Generation of network for training, done (window-size=" + SN.sWindows + "/" + SN.maxRowsRating + ")");
 	s1.computeReputation();
-	System.out.println("Calcolo dei valori di reputazione di training completata");
+	//System.out.println("Calcolo dei valori di reputazione di training completata");
 	MAC = s1.MAC();
 	MAS = s1.MAS(epoca, "INIT-Training-SIM");
 	epoca = 0;
-	System.out.println("Inizio simulazione di training algoritmo U2G-diss");
-	System.out.println("Epoca di training=" + epoca + " MAS = "+MAS);
+	System.out.println("Starting simulation for U2G-Sim");
+	System.out.println("Epoch= " + epoca + " MAS = "+MAS);
 	  e=0.5;
 	  //FOrmazione gruppi con similarità
 	  while(e>=0.5){
@@ -1559,12 +1552,12 @@ import java.io.*;
 	    epoca++;
 	    
 	    //DAC=s1.DAC();
-	    System.out.println("epoca di training=" + epoca + " MAC=" + MAC + ", MAS="+MAS);
+	    System.out.println("Epoch= " + epoca + " MAC=" + MAC + ", MAS="+MAS);
 	  }
 	  System.out.println("finito");
 
 	  //CREA LA SN DI TEST CON I GRUPPI TROVATI NELLA FASE DI TRAINING
-	  System.out.println("inizio simulazione test, nt="+nTest);
+	  System.out.println("Starting test, nt="+nTest);
 
 	  //init first windows
 	  if(overlap==1)
@@ -1592,14 +1585,10 @@ import java.io.*;
 	    end+=swTest;
 	    nt++;
 	}
-	System.out.println("finito");
+	  System.out.println("Test for U2G-Sim ended");
       }
 
      public static void main(String[]args) throws Exception {
-	    experiment2();	
-	    //SN s1=InitTraining(900000);
-	    //s1.computeReputation();
-	    //System.out.println("users="+SN.numUsers);
-	    //System.out.println("coeff="+s1.Pearson());
-	    //expIDCS();
-} }  
+	    experiment2();
+    }     
+}
