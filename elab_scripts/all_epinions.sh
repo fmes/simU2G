@@ -1,6 +1,7 @@
 elab_dir=$(cd `dirname $0`; pwd)
 
-cd results/epinions;
+resd=$elab_dir/../results/epinions;
+cd $resd;
 
 for i in `seq 1 9`; do 
   (cd WI0$i; bash $elab_dir/process_W.sh $i epinions);

@@ -5,7 +5,7 @@ else
 w=$1
 ds=$2
 
-d=$(`cd dirname $0`; pwd);
+d=$(cd `dirname $0`; pwd);
 
   for l in "COMP" "SIM"; do
     statf="stat_$l.m"
