@@ -1,6 +1,6 @@
 # simU2G
 
-## Run Training and tests for CIAO and EPINIONS datasets 
+### Run Training and tests for CIAO and EPINIONS datasets 
 
 * Scripts:
   * run-epinions-W-WI.sh and run-ciao-W-WI.sh will run the software and will left results in results/ciao and results/epinions. 
@@ -16,7 +16,7 @@
     * epinions-rating-sorted.txt
     * epinions-trust.txt
 
-##Process and plot results: 
+###Process and plot results: 
 
 * Scripts: 
   * elab_script/all_ciao.sh will process all the results related to CIAO dataset
