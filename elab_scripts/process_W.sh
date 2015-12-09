@@ -6,6 +6,7 @@ else
 
 ds=$2
 w=$1
+
 d=$(cd `dirname $0`; pwd);
 
 for i in `seq 1 9`; do
@@ -21,7 +22,7 @@ for i in `seq 1 9`; do
   mv $f.elab.txt $newf;
 
   #plot results
-  ln -s $f data.dat;
+  ln -sf $f data.dat;
   gnuplot $d/plot.gnuplot > $f.eps
 done
 fi
